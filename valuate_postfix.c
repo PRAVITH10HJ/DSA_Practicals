@@ -6,44 +6,38 @@ int compute(char symbol, int op1, int op2)
 {
 switch(symbol)
 {
-case '+': return op1+op2; /* Perform addition */
-case '-': return op1-op2; /* Perform subtraction */
-case '*': return op1*op2; /* Perform multiplaction */
-case '/': return op1/op2; /* Perform division */
-case '%': return op1%op2; /* Perform division and gives reminder */
+case '+': return op1+op2; 
+case '-': return op1-op2; 
+case '*': return op1*op2; 
+case '/': return op1/op2; 
+case '%': return op1%op2; 
 case '$':
-case '^': return pow(op1,op2); /* Compute power */
+case '^': return pow(op1,op2);
 }
 }
 void main()
 {
-int s[20]; /* Place for stack elements */
-int res; /* Holds partial or final result */
-int op1; /* First operand */
-int op2; /* Second operand */
+int s[20]; 
+int res; 
+int op1; 
+int op2; 
 int top;
-/* Points to the topmost element */
 int i;
-/* Index value */
-char postfix[20]; /* Input expression */
-char symbol; /* Scanned postfix symbol */
+char postfix[20];
+char symbol; 
 printf("Enter the postfix expression\n");
 scanf("%s",postfix);
 top=-1;
 for(i=0;i<strlen(postfix);i++)
 {
-symbol=postfix[i]; /* Obtains the next character */
-if(isdigit(symbol)) /* If character is a digit or not */
+symbol=postfix[i]; 
+if(isdigit(symbol)) 
 s[++top]=symbol-'0';
 else
 {
 op2=s[top--];
-/* Obtain second operand from stack */
 op1=s[top--];
-/* Obtain first operand from stack */
-/* Perform specified operation */
 res=compute(symbol,op1,op2);
-/* Push partial results on the stack */
 s[++top]=res;
 }
 }
